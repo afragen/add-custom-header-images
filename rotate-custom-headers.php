@@ -93,7 +93,7 @@ if ( is_admin() ) {
 		'sslverify' => true,
 		'requires' => $wp_version,
 		'tested' => $wp_version,
-		'readme' => 'readme.md'
+		'readme' => 'readme.txt'
 
 	);
 	new WPGitHubUpdater($config);

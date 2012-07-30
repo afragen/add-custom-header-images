@@ -54,7 +54,7 @@ class WPGitHubUpdater {
 			'sslverify' => true,
 			'requires' => $wp_version,
 			'tested' => $wp_version,
-			'readme' => 'readme.md'
+			'readme' => 'readme.txt'
 		);
 
 		$this->config = wp_parse_args( $config, $defaults );
