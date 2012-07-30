@@ -22,8 +22,12 @@ Create a new page. It can be private. It must be titled `The Headers`. Add any i
 
 == Changelog ==
 
+= 0.2 =
+* cleanup
+
 = 0.1 =
 * Initial commit
+
 
 == Current Version ==
 
@@ -31,4 +35,4 @@ Using https://github.com/jkudish/WordPress-GitHub-Plugin-Updater
 
 The line below is used for the updater API, please leave it untouched unless bumping the version up :)
 
-~Current Version:0.1~
+~Current Version:0.2~
