@@ -4,12 +4,31 @@
 Plugin Name: Rotate Custom Headers
 Plugin URI: https://github.com/afragen/rotate-custom-headers
 Description: Remove default headers and add custom headers. Images must be added to new page titled 'The Headers'.  Idea and code from <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
-Version: 0.2
+Version: 0.3
 Author: Andy Fragen
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
+//Disable plugin if 'The Headers' page doesn't exist
+
+require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+global $wp_version;
+$pageIDs = get_all_page_ids();
+$pageTitles = array();
+$plugin = plugin_basename( __FILE__ );
+$plugin_data = get_plugin_data( __FILE__, false );
+foreach ( $pageIDs as $pageID ) {
+	$pageTitles[] = get_the_title($pageID);
+}
+
+if ( ( !in_array('The Headers', $pageTitles) ) || ( !($wp_version >= 3.4) ) ) {
+	deactivate_plugins( $plugin );
+	wp_die( "'".$plugin_data['Name']."' requires a page titled 'The Headers' with images. Deactivating Plugin.<br /><br />Back to <a href='".admin_url()."'>WordPress admin</a>." );
+} else {
+	add_action( 'after_setup_theme', 'ajf_remove_header_images', 11 );
+	add_action( 'after_setup_theme', 'wptips_new_default_header_images' );
+}
 
 // REMOVE DEFAULT HEADER IMAGES
 function ajf_remove_header_images() {
@@ -20,7 +39,6 @@ function ajf_remove_header_images() {
     }
     unregister_default_headers( $header_ids );
 }
-add_action( 'after_setup_theme', 'ajf_remove_header_images', 11 );
 
 //ADD NEW DEFAULT HEADER IMAGES
 //http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/
@@ -60,7 +78,6 @@ function wptips_new_default_header_images() {
 
     register_default_headers($images);
 }
-add_action( 'after_setup_theme', 'wptips_new_default_header_images' );
 
 // GithubUpdater
 if ( is_admin() ) {
