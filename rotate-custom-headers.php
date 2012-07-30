@@ -4,7 +4,7 @@
 Plugin Name: Rotate Custom Headers
 Plugin URI: https://github.com/afragen/rotate-custom-headers
 Description: Remove default headers and add custom headers. Images must be added to new page titled 'The Headers'.  Idea and code from <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
-Version: 0.4
+Version: 0.5
 Author: Andy Fragen
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -21,14 +21,16 @@ $plugin_data = get_plugin_data( __FILE__, false );
 foreach ( $pageIDs as $pageID ) {
 	$pageTitles[] = get_the_title($pageID);
 }
-
-if ( ( !in_array('The Headers', $pageTitles) ) || ( !($wp_version >= 3.4) ) ) {
-	deactivate_plugins( $plugin );
-	wp_die( "'".$plugin_data['Name']."' requires a page titled 'The Headers' with images. Deactivating Plugin.<br /><br />Back to <a href='".admin_url()."'>WordPress admin</a>." );
-} else {
-	add_action( 'after_setup_theme', 'ajf_remove_header_images', 11 );
-	add_action( 'after_setup_theme', 'wptips_new_default_header_images' );
+if ( is_admin() ) {
+	if ( ( !in_array('The Headers', $pageTitles) ) || ( !($wp_version >= 3.4) ) ) {
+		deactivate_plugins( $plugin );
+		wp_die( "'".$plugin_data['Name']."' requires a page titled 'The Headers' with images. Deactivating Plugin.<br /><br />Back to <a href='".admin_url()."'>WordPress admin</a>." );
+	}
 }
+//print_r($pageTitles);
+add_action( 'after_setup_theme', 'ajf_remove_header_images', 11 );
+add_action( 'after_setup_theme', 'wptips_new_default_header_images' );
+
 
 // REMOVE DEFAULT HEADER IMAGES
 function ajf_remove_header_images() {
@@ -43,7 +45,6 @@ function ajf_remove_header_images() {
 //ADD NEW DEFAULT HEADER IMAGES
 //http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/
 function wptips_new_default_header_images() {
-    //$child2011_dir = get_bloginfo('stylesheet_directory');
 	$images = array();
 
 	$page = get_page_by_title('The Headers');
@@ -93,7 +94,7 @@ if ( is_admin() ) {
 		'sslverify' => true,
 		'requires' => $wp_version,
 		'tested' => $wp_version,
-		'readme' => 'readme.txt'
+		'readme' => 'readme.md'
 
 	);
 	new WPGitHubUpdater($config);
