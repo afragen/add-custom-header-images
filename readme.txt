@@ -11,11 +11,11 @@ Remove default headers and load custom headers from specific page in a TwentyTen
 
 == Description ==
 
-A plugin that should be able to remove default headers for TwentyTen or TwentyEleven theme and add custom headers based upon the article written by <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
+A plugin that should be able to remove default headers for TwentyTen or TwentyEleven theme and add custom headers based upon the article written by <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a> who was inspired by <a href="http://wpti.ps/?p=107">wpti.ps</a>.
 
 == Installation ==
 
-Create a new page. It can be private. It must be titled `The Headers`. Add any images that you want to use as custom header images to this page.
+Create a new page. It can be private. It must be titled `The Headers`. Add any images that you want to use as custom header images to this page. Header images for TwentyTen need to be cropped appropriately, 940 x 198 pixels.
 
 1. Upload `rotate-custom-headers` directory to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
