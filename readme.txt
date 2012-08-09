@@ -3,7 +3,7 @@ Contributors: afragen
 Tags: headers, rotate headers
 Requires at least: 3.4
 Tested up to: 3.4.1
-Stable tag: 0.5.6
+Stable tag: 0.5.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,7 +23,7 @@ Create a new page. It can be private. It must be titled `The Headers`. Add any i
 == Changelog ==
 
 = 1.0 =
-* Initial commit
+* Initial commit to WordPress repository
 
 == Current Version ==
 
@@ -31,4 +31,4 @@ Using https://github.com/jkudish/WordPress-GitHub-Plugin-Updater
 
 The line below is used for the updater API, please leave it untouched unless bumping the version up :)
 
-~Current Version:0.5.6~
+~Current Version:0.5.7~

@@ -4,7 +4,7 @@
 Plugin Name: Rotate Custom Headers
 Plugin URI: https://github.com/afragen/rotate-custom-headers
 Description: Remove default headers and add custom headers. Images must be added to new page titled 'The Headers'.  Idea and code from <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
-Version: 0.5.6
+Version: 0.5.7
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
 License: GNU General Public License v2
@@ -21,10 +21,9 @@ function rch_headers_page_present () {
 		$pageTitles[] = get_the_title($pageID);
 	}
 	if ( ( !in_array('The Headers', $pageTitles) ) || ( !($wp_version >= 3.4) ) ) {
-		echo '<div class="error">
-       <p>Rotate Custom Headers requires a page titled 'The Headers' with images and WordPress v3.4 or greater.</p>
+		echo '<div class="error"><p>Rotate Custom Headers requires a page titled \'The Headers\' with images and WordPress v3.4 or greater.</p>
     </div>';
-		deactivate_plugins( $plugin );
+		deactivate_plugins(__FILE__);
 	}
 }
 //print_r($pageTitles);
