@@ -4,36 +4,36 @@
 Plugin Name: Rotate Custom Headers
 Plugin URI: https://github.com/afragen/rotate-custom-headers
 Description: Remove default headers and add custom headers. Images must be added to new page titled 'The Headers'.  Idea and code from <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
-Version: 0.5.3
+Version: 0.5.5
 Author: Andy Fragen
+Author URI: http://thefragens.com/blog/
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
 //Disable plugin if 'The Headers' page doesn't exist
-
-require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-global $wp_version;
-$pageIDs = get_all_page_ids();
-$pageTitles = array();
-$plugin = plugin_basename( __FILE__ );
-$plugin_data = get_plugin_data( __FILE__, false );
-foreach ( $pageIDs as $pageID ) {
-	$pageTitles[] = get_the_title($pageID);
-}
-if ( is_admin() ) {
+add_action( 'plugins_loaded', 'rch_headers_page_present' );
+function rch_headers_page_present () {
+	global $wp_version;
+	$pageIDs = get_all_page_ids();
+	$pageTitles = array();
+	foreach ( $pageIDs as $pageID ) {
+		$pageTitles[] = get_the_title($pageID);
+	}
 	if ( ( !in_array('The Headers', $pageTitles) ) || ( !($wp_version >= 3.4) ) ) {
+		echo '<div class="error">
+       <p>Rotate Custom Headers requires a page titled 'The Headers' with images and WordPress v3.4 or greater.</p>
+    </div>';
 		deactivate_plugins( $plugin );
-		wp_die( "'".$plugin_data['Name']."' requires a page titled 'The Headers' with images. Deactivating Plugin.<br /><br />Back to <a href='".admin_url()."'>WordPress admin</a>." );
 	}
 }
 //print_r($pageTitles);
-add_action( 'after_setup_theme', 'ajf_remove_header_images', 11 );
+add_action( 'after_setup_theme', 'rch_remove_header_images', 11 );
 add_action( 'after_setup_theme', 'wptips_new_default_header_images' );
 
 
 // REMOVE DEFAULT HEADER IMAGES
-function ajf_remove_header_images() {
+function rch_remove_header_images() {
 	global $_wp_default_headers;
     $header_ids = array();
     foreach ( $_wp_default_headers as $key => $value) {
