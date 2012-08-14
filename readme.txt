@@ -3,7 +3,7 @@ Contributors: afragen
 Tags: headers, rotate headers
 Requires at least: 3.4
 Tested up to: 3.4.1
-Stable tag: 0.5.8
+Stable tag: 0.5.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,8 +15,7 @@ A plugin that should be able to remove default headers for TwentyTen or TwentyEl
 
 == Installation ==
 
-Create a new page. It can be private. It must be titled `The Headers`. Add any images that you want to use as custom header images to this page. Header images for TwentyTen need to be cropped appropriately, 940 x 198 pixels.
-
+1. Create a new page. It can be private. It must be titled `The Headers`. Add any images that you want to use as custom header images to this page. Header images should be cropped appropriately for the base theme, TwentyTen or TwentyEleven.
 1. Upload `rotate-custom-headers` directory to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
@@ -31,4 +30,4 @@ Using https://github.com/jkudish/WordPress-GitHub-Plugin-Updater
 
 The line below is used for the updater API, please leave it untouched unless bumping the version up :)
 
-~Current Version:0.5.8~
+~Current Version:0.5.9~
