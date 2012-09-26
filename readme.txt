@@ -22,7 +22,7 @@ A plugin that should be able to remove default headers for TwentyTen or TwentyEl
 
 == Changelog ==
 
-= 1.0 =
+= x.x =
 * Initial commit to WordPress repository
 
 == Current Version ==
@@ -31,4 +31,4 @@ Using https://github.com/jkudish/WordPress-GitHub-Plugin-Updater
 
 The line below is used for the updater API, please leave it untouched unless bumping the version up :)
 
-~Current Version:0.5.9~
+~Current Version:0.6~
