@@ -4,14 +4,12 @@
 Plugin Name: Rotate Custom Headers
 Plugin URI: https://github.com/afragen/rotate-custom-headers
 Description: Remove default headers and add custom headers. Images must be added to new page titled 'The Headers'.  Idea and code from <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
-Version: 0.6.1
+Version: 0.6.2
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
-
-define('GIT_REPO', 'rotate-custom-headers');
 
 //Disable plugin if 'The Headers' page doesn't exist
 add_action( 'plugins_loaded', 'rch_headers_page_present' );
@@ -91,10 +89,10 @@ if ( is_admin() ) {
 	$config = array(		
 		'slug' => plugin_basename(__FILE__),
 		'proper_folder_name' => dirname( plugin_basename(__FILE__) ),
-		'api_url' => 'https://api.github.com/repos/afragen/'.GIT_REPO,
-		'raw_url' => 'https://raw.github.com/afragen/'.GIT_REPO.'/master',
-		'github_url' => 'https://github.com/afragen/'.GIT_REPO,
-		'zip_url' => 'https://github.com/afragen/'.GIT_REPO.'/zipball/master',
+		'api_url' => 'https://api.github.com/repos/afragen/rotate-custom-headers',
+		'raw_url' => 'https://raw.github.com/afragen/rotate-custom-headers/master',
+		'github_url' => 'https://github.com/afragen/rotate-custom-headers',
+		'zip_url' => 'https://github.com/afragen/rotate-custom-headers/zipball/master',
 		'sslverify' => true,
 		'requires' => $wp_version,
 		'tested' => $wp_version,
