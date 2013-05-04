@@ -2,8 +2,8 @@
 Contributors: afragen
 Tags: headers, rotate headers
 Requires at least: 3.4
-Tested up to: 3.4.1
-Stable tag: 0.6.3
+Tested up to: 3.5.1
+Version: 0.6.4
 Git URI: https://github.com/afragen/rotate-custom-headers
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -25,10 +25,3 @@ A plugin that should be able to remove default headers for TwentyTen or TwentyEl
 = x.x =
 * Initial commit to WordPress repository
 
-== Current Version ==
-
-Using https://github.com/jkudish/WordPress-GitHub-Plugin-Updater
-
-The line below is used for the updater API, please leave it untouched unless bumping the version up :)
-
-~Current Version:0.6.3~

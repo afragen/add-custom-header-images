@@ -4,7 +4,7 @@
 Plugin Name: Rotate Custom Headers
 Plugin URI: https://github.com/afragen/rotate-custom-headers
 Description: Remove default headers and add custom headers. Images must be added to new page titled 'The Headers'.  Idea and code from <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
-Version: 0.6.3
+Version: 0.6.4
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
 License: GNU General Public License v2
@@ -82,24 +82,19 @@ function wptips_new_default_header_images() {
     register_default_headers($images);
 }
 
+//Load github_plugin_updater
+if ( is_admin() )
+	add_action( 'plugins_loaded', 'rch_github_plugin_updater' );
+	
+function rch_github_plugin_updater() {
 
-//Load GithubUpdater
-if ( is_admin() ) {
-	$repo = 'afragen/rotate-custom-headers';
-	global $wp_version;
-	include_once( dirname(__FILE__).'/updater/updater.php' );
-		$config = array(
-			'slug' => plugin_basename( __FILE__ ),
-			'proper_folder_name' => basename($repo),
-			'api_url' => 'https://api.github.com/repos/'.$repo,
-			'raw_url' => 'https://raw.github.com/'.$repo.'/master',
-			'github_url' => 'https://github.com/'.$repo,
-			'zip_url' => 'https://github.com/'.$repo.'/zipball/master',
-			'sslverify' => true,
-			'requires' => '3.0',
-			'tested' => '3.3',
-			'readme' => 'readme.txt',
-			'access_token' => '',
-		);
-	new WP_GitHub_Updater($config);
+	if ( ! function_exists( 'github_plugin_updater_register' ) )
+		return false;
+
+	github_plugin_updater_register( array(
+		'owner'	=> 'afragen',
+		'repo'	=> 'rotate-custom-headers',
+		'slug'	=> 'rotate-custom-headers/rotate-custom-headers.php', // defaults to the repo value ('repo/repo.php')
+	) );
 }
+
