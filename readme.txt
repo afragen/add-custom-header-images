@@ -25,6 +25,7 @@ Once the custom header images are loaded, just go to `Appearance > Header` and s
 
 == Changelog ==
 
-= x.x =
+= 0.1 =
+
 * Initial commit to WordPress repository
 
