@@ -5,7 +5,7 @@ Plugin Name: Add Custom Header Images
 Plugin URI: https://github.com/afragen/add-custom-header-images
 GitHub Plugin URI: https://github.com/afragen/add-custom-header-images
 Description: Remove default header images and add custom header images. Images must be added to new page titled <strong>The Headers</strong>.  Based upon a post from <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
-Version: 0.1
+Version: 0.2
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
 License: GNU General Public License v2
@@ -40,16 +40,17 @@ function achi_remove_header_images() {
 function achi_new_default_header_images() {
 	$images = array();
 	$page = get_page_by_title( 'The Headers' );
-	$images = new WP_Query( array(
-		'post_parent'            => $page->ID,
-		'post_status'            => 'inherit',
-		'post_type'              => 'attachment',
-		'post_mime_type'         => 'image',
-		'order'                  => 'ASC',
-		'orderby'                => 'menu_order ID',
-		) );
 
-	foreach( $images->posts as $image ) {
+	$images = get_children( array(
+		'post_parent'    => $page->ID,
+		'post_status'    => 'inherit',
+		'post_type'      => 'attachment',
+		'post_mime_type' => 'image',
+		'order'          => 'ASC',
+		'orderby'        => 'menu_order ID',
+		));
+
+	foreach( $images as $key => $image ) {
 		$thumb = wp_get_attachment_image_src( $image->ID, 'medium' );
 		$headers[] = array(
 			'url'           => $image->guid,
@@ -61,6 +62,7 @@ function achi_new_default_header_images() {
 	register_default_headers( $headers );
 }
 
+if( !is_admin() ) return;
 add_action( 'plugins_loaded', 'achi_headers_page_present' );
 add_action( 'after_setup_theme', 'achi_remove_header_images', 11 );
 add_action( 'after_setup_theme', 'achi_new_default_header_images' );

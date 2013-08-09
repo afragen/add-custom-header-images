@@ -3,7 +3,7 @@ Contributors: afragen
 Tags: headers, rotate headers, images
 Requires at least: 3.4
 Tested up to: 3.6
-Version: 0.1
+Version: 0.2
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -25,7 +25,7 @@ Once the custom header images are loaded, just go to `Appearance > Header` and s
 
 == Changelog ==
 
-= 0.1 =
+= 0.2 =
 
 * Initial commit to WordPress repository
 
