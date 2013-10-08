@@ -5,7 +5,7 @@ Plugin Name: Add Custom Header Images
 Plugin URI: https://github.com/afragen/add-custom-header-images
 GitHub Plugin URI: afragen/add-custom-header-images
 Description: Remove default header images and add custom header images. Images must be added to new page titled <strong>The Headers</strong>.  Based upon a post from <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
-Version: 0.3.1
+Version: 0.7.0
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
 License: GNU General Public License v2
