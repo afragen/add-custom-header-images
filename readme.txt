@@ -3,10 +3,11 @@ Contributors: afragen
 Tags: headers, rotate headers, images
 Requires at least: 3.4
 Tested up to: 3.9
-Version: 0.8.0
+Version: 0.9.1
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Stable tag: trunk
 
 Remove default header images and load custom header images from **The Headers** page.
 
