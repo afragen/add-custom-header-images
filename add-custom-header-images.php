@@ -80,7 +80,7 @@ class Add_Custom_Header_Images {
 	/**
 	 * Add new default header images
 	 *
-	 * @source http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/
+	 * @link http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/
 	 */
 	public function new_default_header_images() {
 		$page    = get_page_by_title( 'The Headers' );
