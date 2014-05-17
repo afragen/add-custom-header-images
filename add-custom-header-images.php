@@ -10,7 +10,7 @@ Author URI:        http://thefragens.com/blog/
 Text Domain:       add-custom-header-images
 Domain Path:       /languages
 GitHub Plugin URI: https://github.com/afragen/add-custom-header-images
-GitHub Branch:     develop
+GitHub Branch:     master
 */
 
 /*
