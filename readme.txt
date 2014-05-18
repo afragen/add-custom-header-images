@@ -3,8 +3,7 @@ Contributors: afragen
 Tags: headers, rotate headers, images
 Requires at least: 3.6
 Tested up to: 3.9.1
-Version: 1.0.0
-Stable tag: trunk
+Stable tag: 1.0.0
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
