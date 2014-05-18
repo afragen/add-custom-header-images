@@ -3,12 +3,12 @@ Contributors: afragen
 Tags: headers, rotate headers, images
 Requires at least: 3.6
 Tested up to: 3.9.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Remove default header images and load custom header images from **The Headers** page. Allows for easy selection of random header images.
+Remove default header images and load custom header images from <strong>The Headers</strong> page. Allows for easy selection of random header images in your theme.
 
 == Description ==
 
@@ -28,6 +28,10 @@ The plugin will not activate unless there is a page titled, **The Headers**.
 1. Go to `Appearance > Header` or `Customize > Header Image` and select `Randomize` from the Default Images section.
 
 == Changelog ==
+
+= 1.0.1 =
+* Add .pot files
+* Fix short description by removing Markdown
 
 = 1.0.0 =
 * Initial commit to WordPress repository
