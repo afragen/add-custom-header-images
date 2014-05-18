@@ -4,10 +4,10 @@ Tags: headers, rotate headers, images
 Requires at least: 3.6
 Tested up to: 3.9.1
 Version: 1.0.0
+Stable tag: trunk
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: trunk
 
 Remove default header images and load custom header images from **The Headers** page. Allows for easy selection of random header images.
 
@@ -26,11 +26,9 @@ The plugin will not activate unless there is a page titled, **The Headers**.
 1. Create a new page. It can be private. It must be titled `The Headers`. Add any images that you want to use as custom header images to this page. Header images should be cropped appropriately for the base theme.
 1. Upload `add-custom-header-images` directory to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Go to `Appearance > Header` and select `Random` from the Default Images section.
+1. Go to `Appearance > Header` or `Customize > Header Image` and select `Randomize` from the Default Images section.
 
 == Changelog ==
 
 = 1.0.0 =
-
 * Initial commit to WordPress repository
-
