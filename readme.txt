@@ -8,7 +8,7 @@ Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Remove default header images and load custom header images from <strong>The Headers</strong> page. Allows for easy selection of random header images in your theme.
+Remove default header images and load custom header images from 'The Headers' page. Allows for easy selection of random header images in your theme.
 
 == Description ==
 
