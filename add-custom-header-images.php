@@ -4,13 +4,13 @@
 Plugin Name:       Add Custom Header Images
 Plugin URI:        https://github.com/afragen/add-custom-header-images
 Description:       Remove default header images and add custom header images. Images must be added to new page titled <strong>The Headers</strong>.  Based upon a post from <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
-Version:           1.0.2
+Version:           1.0.3
 Author:            Andy Fragen
 Author URI:        http://thefragens.com
 Text Domain:       add-custom-header-images
 Domain Path:       /languages
 GitHub Plugin URI: https://github.com/afragen/add-custom-header-images
-GitHub Branch:     master
+GitHub Branch:     develop
 */
 
 /*
@@ -56,10 +56,10 @@ class Add_Custom_Header_Images {
 
 		if ( is_admin() ) {
 			if ( ( is_null( get_page_by_title( 'The Headers' ) ) ) || ( ! ( $wp_version >= 3.4 ) ) ) {
-				$warning = '<div class="error"><p>' . __( 'Add Custom Header Images requires a page titled <strong>The Headers</strong> with images and WordPress v3.4 or greater.', 'add-custom-header-images' ) . '</p></div>';
+				$warning = '<div class="error"><p>' . __( 'Add Custom Header Images requires a page titled ', 'add-custom-header-images' ) . '<strong>The Headers</strong>' . __( ' with images and WordPress v3.4 or greater.', 'add-custom-header-images' ) . '</p><p><a href="./plugins.php">Return to Plugins Page</a></p></div>';
 				echo $warning;
 				deactivate_plugins( __FILE__ );
-				exit;
+				wp_die();
 			}
 		}
 	}
