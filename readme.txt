@@ -2,8 +2,8 @@
 Contributors: afragen
 Tags: headers, rotate headers, images
 Requires at least: 3.6
-Tested up to: 3.9.1
-Stable tag: 1.0.1
+Tested up to: 4.0
+Stable tag: 1.0.2
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -28,6 +28,9 @@ The plugin will not activate unless there is a page titled, **The Headers**.
 1. Go to `Appearance > Header` or `Customize > Header Image` and select `Randomize` from the Default Images section.
 
 == Changelog ==
+
+= 1.0.2 =
+* exit after deactivating plugin when not able to be activated
 
 = 1.0.1 =
 * Add .pot files
