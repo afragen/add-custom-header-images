@@ -3,7 +3,7 @@ Contributors: afragen
 Tags: headers, rotate headers, images
 Requires at least: 3.6
 Tested up to: 4.1
-Stable tag: 1.0.4
+Stable tag: 1.1.0
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -18,7 +18,7 @@ Create a Page named **The Headers**. Then upload header images (media files) to 
 
 Once the custom header images are loaded, just go to `Appearance > Header` or `Customize > Header Image` and select `Randomize suggested headers`.
 
-The plugin will not activate unless there is a page titled, **The Headers**.
+The plugin will display an error notice if there is **not** a page titled, **The Headers**.
 
 == Installation ==
 
@@ -28,6 +28,9 @@ The plugin will not activate unless there is a page titled, **The Headers**.
 1. Go to `Appearance > Header` or `Customize > Header Image` and select `Randomize` from the Default Images section.
 
 == Changelog ==
+
+= 1.1.0 =
+* remove `deactivate_plugins` to and just display an error notice for better compatibility.
 
 = 1.0.4 =
 * added some error checking
