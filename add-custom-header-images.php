@@ -54,8 +54,11 @@ class Add_Custom_Header_Images {
 		global $wp_version;
 
 		if ( is_admin() ) {
-			if ( ( is_null( get_page_by_title( 'The Headers' ) ) ) || ( ! ( $wp_version >= 3.4 ) ) ) {
-				$warning = '<div class="error"><p>' . __( 'Add Custom Header Images requires a page titled ', 'add-custom-header-images' ) . '<strong>The Headers</strong>' . __( ' with images and WordPress v3.4 or greater.', 'add-custom-header-images' ) . '</div>';
+			if (
+				is_null( get_page_by_title( __( 'The Headers', 'add-custom-header-images' ) ) ) ||
+				! $wp_version >= 3.4
+			) {
+				$warning = '<div class="error"><p>' . __( 'Add Custom Header Images requires a page titled <strong>The Headers</strong> with images and WordPress v3.4 or greater.', 'add-custom-header-images' ) . '</div>';
 				echo $warning;
 			}
 		}
@@ -85,7 +88,7 @@ class Add_Custom_Header_Images {
 	 * @link http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/
 	 */
 	public function new_default_header_images() {
-		$page    = get_page_by_title( 'The Headers' );
+		$page    = get_page_by_title( __( 'The Headers', 'add-custom-header-images' ) );
 		if ( ! is_object( $page ) ) {
 			return false;
 		}
