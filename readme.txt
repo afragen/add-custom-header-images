@@ -3,7 +3,7 @@ Contributors: afragen
 Tags: headers, rotate headers, images
 Requires at least: 3.6
 Tested up to: 4.2
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -28,6 +28,9 @@ The plugin will display an error notice if there is **not** a page titled, **The
 1. Go to `Appearance > Header` or `Customize > Header Image` and select `Randomize` from the Default Images section.
 
 == Changelog ==
+
+= 1.3.0 =
+* better i18n strings, updated POT
 
 = 1.2.0 =
 * move `remove_default_header_images` to run only if **The Headers** page is present. Should fix a PHP Notice too.
