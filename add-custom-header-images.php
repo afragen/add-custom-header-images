@@ -11,6 +11,7 @@ Text Domain:       add-custom-header-images
 Domain Path:       /languages
 GitHub Plugin URI: https://github.com/afragen/add-custom-header-images
 GitHub Branch:     develop
+Requires WP:       3.4.0
 */
 
 /*
@@ -41,7 +42,15 @@ class Add_Custom_Header_Images {
 	 * Constructor
 	 */
 	public function __construct() {
-		add_action( 'admin_notices', array( $this, 'headers_page_present' ) );
+		global $wp_version;
+		if ( is_admin() &&
+		     is_null( get_page_by_title( __( 'The Headers', 'add-custom-header-images' ) ) ) ||
+		     ! $wp_version >= 3.4
+		) {
+			add_action( 'admin_notices', array( $this, 'headers_page_present' ) );
+			return false;
+		}
+
 		add_action( 'after_setup_theme', array( $this, 'new_default_header_images' ) );
 		load_plugin_textdomain( 'add-custom-header-images', false, basename( dirname( __FILE__ ) ) );
 	}
@@ -51,17 +60,13 @@ class Add_Custom_Header_Images {
 	 * Disable plugin if 'The Headers' page does not exist
 	 */
 	public function headers_page_present () {
-		global $wp_version;
-
-		if ( is_admin() ) {
-			if (
-				is_null( get_page_by_title( __( 'The Headers', 'add-custom-header-images' ) ) ) ||
-				! $wp_version >= 3.4
-			) {
-				$warning = '<div class="error"><p>' . __( 'Add Custom Header Images requires a page titled <strong>The Headers</strong> with images and WordPress v3.4 or greater.', 'add-custom-header-images' ) . '</div>';
-				echo $warning;
-			}
-		}
+		?>
+		<div class="error notice is-dismissible">
+			<p>
+				<?php _e( 'Add Custom Header Images requires a page titled <strong>The Headers</strong> with images and WordPress v3.4 or greater.', 'add-custom-header-images' ); ?>
+			</p>
+		</div>
+		<?php
 	}
 
 	/**
