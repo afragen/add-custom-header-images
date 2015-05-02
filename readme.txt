@@ -1,9 +1,9 @@
-=== Plugin Name ===
+=== Add Custom Header Images ===
 Contributors: afragen
 Tags: headers, rotate headers, images
 Requires at least: 3.6
-Tested up to: 4.2
-Stable tag: 1.3.0
+Tested up to: 4.2.1
+Stable tag: 1.3.1
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -27,7 +27,16 @@ The plugin will display an error notice if there is **not** a page titled, **The
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Go to `Appearance > Header` or `Customize > Header Image` and select `Randomize` from the Default Images section.
 
+== Attribution ==
+
+Thanks to Andrijana Nikolic at [Web Hosting Geeks](http://webhostinggeeks.com) for translation help.
+
 == Changelog ==
+
+= 1.3.1 =
+* fix readme.txt as plugin name generic
+* simplify warning, remove nested if statements
+* update .pot
 
 = 1.3.0 =
 * better i18n strings, updated POT

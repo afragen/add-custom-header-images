@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Add Custom Header Images\n"
 "POT-Creation-Date: 2015-05-02 15:31-0800\n"
-"PO-Revision-Date: 2015-05-02 15:31-0800\n"
+"PO-Revision-Date: 2015-05-02 15:32-0800\n"
 "Last-Translator: Andy Fragen <andy@thefragens.com>\n"
 "Language-Team: Andy Fragen <andy@thefragens.com>\n"
 "Language: en_US\n"
@@ -21,17 +21,19 @@ msgstr ""
 
 #: add-custom-header-images.php:47 add-custom-header-images.php:96
 msgid "The Headers"
-msgstr ""
+msgstr "Zaglavlja"
 
 #: add-custom-header-images.php:66
 msgid ""
 "Add Custom Header Images requires a page titled <strong>The Headers</strong> "
 "with images and WordPress v3.4 or greater."
 msgstr ""
+"Add Custom Header Images zahteva stranicu pod nazivom <strong>Zaglavlja</"
+"strong> sa slikama i WordPress v3.4 ili noviju."
 
 #. Plugin Name of the plugin/theme
 msgid "Add Custom Header Images"
-msgstr ""
+msgstr "Add Custom Header Images"
 
 #. Description of the plugin/theme
 msgid ""
@@ -40,7 +42,12 @@ msgid ""
 "from <a href=\"http://juliobiason.net/2011/10/25/twentyeleven-with-easy-"
 "rotating-header-images/\">Julio Biason</a>."
 msgstr ""
+"Uklonite podrazumevane slike zaglavlja i dodajte prilagođene slike "
+"zaglavlja. Slike se moraju dodati na novu stranicu pod nazivom "
+"<strong>Zaglavlja</strong>. Na osnovu posta sa <a href=\"http://juliobiason."
+"net/2011/10/25/twentyeleven-with-easy-rotating-header-images/\">Julio "
+"Biason</a>."
 
 #. Author of the plugin/theme
 msgid "Andy Fragen"
-msgstr ""
+msgstr "Andy Fragen"
