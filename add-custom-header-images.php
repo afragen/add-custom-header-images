@@ -65,7 +65,11 @@ class Add_Custom_Header_Images {
 		?>
 		<div class="error notice is-dismissible">
 			<p>
-				<?php _e( 'Add Custom Header Images requires a page titled <strong>The Headers</strong> with images and WordPress v3.4 or greater.', 'add-custom-header-images' ); ?>
+				<?php printf(
+					esc_html__( 'Add Custom Header Images requires a page titled %sThe Headers%s with images and WordPress v3.4 or greater.', 'add-custom-header-images' ),
+				'<strong>',
+				'</strong.'
+				); ?>
 			</p>
 		</div>
 		<?php
