@@ -33,6 +33,9 @@ Thanks to Andrijana Nikolic at [Web Hosting Geeks](http://webhostinggeeks.com) f
 
 == Changelog ==
 
+= 1.3.3 =
+* tested to 4.3
+
 = 1.3.2 =
 * load textdomain early so translations work.
 
