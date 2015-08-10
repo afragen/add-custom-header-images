@@ -1,36 +1,41 @@
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Add Custom Header Images\n"
-"POT-Creation-Date: 2015-05-02 15:31-0800\n"
-"PO-Revision-Date: 2015-05-02 15:31-0800\n"
-"Last-Translator: Andy Fragen <andy@thefragens.com>\n"
-"Language-Team: Andy Fragen <andy@thefragens.com>\n"
-"Language: en_US\n"
+"POT-Creation-Date: 2015-08-09 19:00-0700\n"
+"PO-Revision-Date: 2015-08-09 18:57-0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.6\n"
+"X-Generator: Poedit 1.8.3\n"
 "X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: add-custom-header-images.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: add-custom-header-images.php:47 add-custom-header-images.php:96
+#: add-custom-header-images.php:50 add-custom-header-images.php:102
 msgid "The Headers"
 msgstr ""
 
-#: add-custom-header-images.php:66
+#: add-custom-header-images.php:69
+#, php-format
 msgid ""
-"Add Custom Header Images requires a page titled <strong>The Headers</strong> "
-"with images and WordPress v3.4 or greater."
+"Add Custom Header Images requires a page titled %sThe Headers%s with images "
+"and WordPress v3.4 or greater."
 msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "Add Custom Header Images"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/afragen/add-custom-header-images"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -43,4 +48,8 @@ msgstr ""
 
 #. Author of the plugin/theme
 msgid "Andy Fragen"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://thefragens.com"
 msgstr ""
