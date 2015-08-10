@@ -2,7 +2,7 @@
 Contributors: afragen
 Tags: headers, rotate headers, images
 Requires at least: 3.6
-Tested up to: 4.2.1
+Tested up to: 4.3
 Stable tag: 1.3.2
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
@@ -32,6 +32,9 @@ The plugin will display an error notice if there is **not** a page titled, **The
 Thanks to Andrijana Nikolic at [Web Hosting Geeks](http://webhostinggeeks.com) for translation help.
 
 == Changelog ==
+
+= 1.3.3 =
+* tested to 4.3
 
 = 1.3.2 =
 * load textdomain early so translations work.
