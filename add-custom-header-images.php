@@ -122,10 +122,18 @@ class Add_Custom_Header_Images {
 
 		foreach ( $images as $key => $image ) {
 			$thumb     = wp_get_attachment_image_src( $image->ID, 'medium' );
+
+			// WordPress 4.4.0 compatibility
+			$srcset = null;
+			if ( function_exists( 'wp_get_attachment_image_srcset' ) ) {
+				$srcset = wp_get_attachment_image_srcset( $image->ID );
+			}
+
 			$headers[] = array(
-				'url'           => $image->guid,
-				'thumbnail_url' => $thumb[0],
-				'description'   => $image->post_title,
+					'url'           => $image->guid,
+					'thumbnail_url' => $thumb[0],
+					'description'   => $image->post_title,
+					'attachment_id' => $srcset,
 			);
 		}
 
