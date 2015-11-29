@@ -2,8 +2,8 @@
 Contributors: afragen
 Tags: headers, rotate headers, images
 Requires at least: 3.6
-Tested up to: 4.3
-Stable tag: 1.3.2
+Tested up to: 4.4
+Stable tag: 1.4.0
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -32,6 +32,10 @@ The plugin will display an error notice if there is **not** a page titled, **The
 Thanks to Andrijana Nikolic at [Web Hosting Geeks](http://webhostinggeeks.com) for translation help.
 
 == Changelog ==
+
+= 1.4.0 =
+* added srcset for responsive image sizes
+* tested and updated for WP 4.4.0
 
 = 1.3.3 =
 * tested to 4.3
