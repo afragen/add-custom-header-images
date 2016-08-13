@@ -23,7 +23,7 @@
 class Add_Custom_Header_Images {
 
 	/**
-	 * Constructor
+	 * Constructor.
 	 */
 	public function __construct() {
 		global $wp_version;
@@ -44,7 +44,7 @@ class Add_Custom_Header_Images {
 
 
 	/**
-	 * Disable plugin if 'The Headers' page does not exist
+	 * Disable plugin if 'The Headers' page does not exist.
 	 */
 	public function headers_page_present() {
 		?>
@@ -61,7 +61,7 @@ class Add_Custom_Header_Images {
 	}
 
 	/**
-	 * Remove default header images
+	 * Remove default header images.
 	 */
 	public function remove_default_header_images() {
 		global $_wp_default_headers;
@@ -81,7 +81,7 @@ class Add_Custom_Header_Images {
 	}
 
 	/**
-	 * Add new default header images
+	 * Add new default header images.
 	 *
 	 * @link http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/
 	 */
