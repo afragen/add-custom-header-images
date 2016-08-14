@@ -34,7 +34,7 @@ Thanks to Andrijana Nikolic at [Web Hosting Geeks](http://webhostinggeeks.com) f
 ## Changelog
 
 #### 1.5.0
-* removed specific srcset code as it was unnecessary and caused failures.
+* removed specific srcset code as it was unnecessary and caused failures. `srcset` needs to be set correctly in `header.php`
 
 #### 1.4.2
 * fixed malformed closing `strong` tag in error message
