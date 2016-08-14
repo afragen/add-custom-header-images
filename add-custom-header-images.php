@@ -1,36 +1,20 @@
 <?php
 
-/*
-Plugin Name:       Add Custom Header Images
-Plugin URI:        https://github.com/afragen/add-custom-header-images
-Description:       Remove default header images and add custom header images. Images must be added to new page titled <strong>The Headers</strong>.  Based upon a post from <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
-Version:           1.4.2
-Author:            Andy Fragen
-Author URI:        http://thefragens.com
-Text Domain:       add-custom-header-images
-Domain Path:       /languages
-GitHub Plugin URI: https://github.com/afragen/add-custom-header-images
-GitHub Branch:     master
-Requires WP:       3.4.0
-*/
-
-/*
-Copyright 2014 Andy Fragen
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-*/
+/**
+ * Plugin Name:       Add Custom Header Images
+ * Plugin URI:        https://github.com/afragen/add-custom-header-images
+ * Description:       Remove default header images and add custom header images. Images must be added to new page titled <strong>The Headers</strong>.  Based upon a post from <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
+ * Version:           1.5.0
+ * Author:            Andy Fragen
+ * Author URI:        http://thefragens.com
+ * License:           GNU General Public License v2
+ * License URI:       http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * Text Domain:       add-custom-header-images
+ * Domain Path:       /languages
+ * GitHub Plugin URI: https://github.com/afragen/add-custom-header-images
+ * GitHub Branch:     master
+ * Requires WP:       3.4.0
+ */
 
 
 /**
@@ -39,7 +23,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 class Add_Custom_Header_Images {
 
 	/**
-	 * Constructor
+	 * Constructor.
 	 */
 	public function __construct() {
 		global $wp_version;
@@ -51,6 +35,7 @@ class Add_Custom_Header_Images {
 		     ! $wp_version >= 3.4
 		) {
 			add_action( 'admin_notices', array( $this, 'headers_page_present' ) );
+
 			return false;
 		}
 
@@ -59,16 +44,16 @@ class Add_Custom_Header_Images {
 
 
 	/**
-	 * Disable plugin if 'The Headers' page does not exist
+	 * Disable plugin if 'The Headers' page does not exist.
 	 */
-	public function headers_page_present () {
+	public function headers_page_present() {
 		?>
 		<div class="error notice is-dismissible">
 			<p>
 				<?php printf(
 					esc_html__( 'Add Custom Header Images requires a page titled %sThe Headers%s with images and WordPress v3.4 or greater.', 'add-custom-header-images' ),
-				'<strong>',
-				'</strong>'
+					'<strong>',
+					'</strong>'
 				); ?>
 			</p>
 		</div>
@@ -76,7 +61,7 @@ class Add_Custom_Header_Images {
 	}
 
 	/**
-	 * Remove default header images
+	 * Remove default header images.
 	 */
 	public function remove_default_header_images() {
 		global $_wp_default_headers;
@@ -87,14 +72,16 @@ class Add_Custom_Header_Images {
 		}
 
 		foreach ( $_wp_default_headers as $key => $value ) {
-			if ( ! is_int( $key ) ) { $header_ids[] = $key; }
+			if ( ! is_int( $key ) ) {
+				$header_ids[] = $key;
+			}
 		}
 
 		unregister_default_headers( $header_ids );
 	}
 
 	/**
-	 * Add new default header images
+	 * Add new default header images.
 	 *
 	 * @link http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/
 	 */
@@ -106,14 +93,14 @@ class Add_Custom_Header_Images {
 		$this->remove_default_header_images();
 		$headers = array();
 		$images  = get_children(
-				array(
-						'post_parent'    => $page->ID,
-						'post_status'    => 'inherit',
-						'post_type'      => 'attachment',
-						'post_mime_type' => 'image',
-						'order'          => 'ASC',
-						'orderby'        => 'menu_order ID',
-						)
+			array(
+				'post_parent'    => $page->ID,
+				'post_status'    => 'inherit',
+				'post_type'      => 'attachment',
+				'post_mime_type' => 'image',
+				'order'          => 'ASC',
+				'orderby'        => 'menu_order ID',
+			)
 		);
 
 		if ( empty( $images ) ) {
@@ -121,19 +108,13 @@ class Add_Custom_Header_Images {
 		}
 
 		foreach ( $images as $key => $image ) {
-			$thumb = wp_get_attachment_image_src( $image->ID, 'medium' );
-
-			// WordPress 4.4.0 compatibility
-			$srcset = null;
-			if ( function_exists( 'wp_get_attachment_image_srcset' ) ) {
-				$srcset = wp_get_attachment_image_srcset( $image->ID );
-			}
+			$thumb = wp_get_attachment_image_src( $image->ID, 'thumbnail' );
 
 			$headers[] = array(
-					'url'           => $image->guid,
-					'thumbnail_url' => $thumb[0],
-					'description'   => $image->post_title,
-					'attachment_id' => $srcset,
+				'url'           => $image->guid,
+				'thumbnail_url' => $thumb[0],
+				'description'   => $image->post_title,
+				'attachment_id' => $image->ID,
 			);
 		}
 
