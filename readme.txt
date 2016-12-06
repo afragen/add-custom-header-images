@@ -2,7 +2,7 @@
 Contributors: afragen
 Tags: headers, rotate headers, images
 Requires at least: 3.6
-Tested up to: 4.6
+Tested up to: 4.7
 Stable tag: 1.5.1
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
@@ -23,9 +23,9 @@ The plugin will display an error notice if there is **not** a page titled, **The
 ## Installation
 
 1. Create a new page. It can be private. It must be titled `The Headers`. Add any images that you want to use as custom header images to this page. Header images should be cropped appropriately for the base theme.
-1. Upload `add-custom-header-images` directory to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Go to `Appearance > Header` or `Customize > Header Image` and select `Randomize` from the Default Images section.
+2. Upload `add-custom-header-images` directory to the `/wp-content/plugins/` directory
+3. Activate the plugin through the 'Plugins' menu in WordPress
+4. Go to `Appearance > Header` or `Customize > Header Image` and select `Randomize` from the Default Images section.
 
 ## Attribution
 
