@@ -4,7 +4,7 @@
  * Plugin Name:       Add Custom Header Images
  * Plugin URI:        https://github.com/afragen/add-custom-header-images
  * Description:       Remove default header images and add custom header images. Images must be added to new page titled <strong>The Headers</strong>.  Based upon a post from <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
- * Version:           1.5.1
+ * Version:           1.5.2
  * Author:            Andy Fragen
  * Author URI:        http://thefragens.com
  * License:           GNU General Public License v2
@@ -23,16 +23,32 @@
 class Add_Custom_Header_Images {
 
 	/**
+	 * Placeholder for the page title.
+	 *
+	 * @var string|void
+	 */
+	private $the_headers_title;
+
+	/**
+	 * Variable to hold the data for `get_page_by_title()`.
+	 *
+	 * @var array|null|\WP_Post
+	 */
+	private $the_headers_page;
+
+	/**
 	 * Constructor.
 	 */
 	public function __construct() {
 		global $wp_version;
 
+		$this->the_headers_title = __( 'The Headers', 'add-custom-header-images' );
+		$this->the_headers_page  = get_page_by_title( esc_attr( $this->the_headers_title ) );
+
 		load_plugin_textdomain( 'add-custom-header-images', false, basename( dirname( __FILE__ ) ) );
 
 		if ( is_admin() &&
-		     is_null( get_page_by_title( esc_attr__( 'The Headers', 'add-custom-header-images' ) ) ) ||
-		     ! $wp_version >= 3.4
+		     is_null( $this->the_headers_page ) || ! $wp_version >= 3.4
 		) {
 			add_action( 'admin_notices', array( $this, 'headers_page_present' ) );
 
@@ -86,8 +102,7 @@ class Add_Custom_Header_Images {
 	 * @link http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/
 	 */
 	public function new_default_header_images() {
-		$page = get_page_by_title( __( 'The Headers', 'add-custom-header-images' ) );
-		if ( ! is_object( $page ) ) {
+		if ( ! $this->the_headers_page instanceof \WP_Post ) {
 			return false;
 		}
 
@@ -95,7 +110,7 @@ class Add_Custom_Header_Images {
 		$headers = array();
 		$images  = get_children(
 			array(
-				'post_parent'    => $page->ID,
+				'post_parent'    => $this->the_headers_page->ID,
 				'post_status'    => 'inherit',
 				'post_type'      => 'attachment',
 				'post_mime_type' => 'image',

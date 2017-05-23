@@ -2,8 +2,8 @@
 Contributors: afragen
 Tags: headers, rotate headers, images
 Requires at least: 3.6
-Tested up to: 4.7
-Stable tag: 1.5.1
+Tested up to: 4.8
+Stable tag: 1.5.2
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -32,6 +32,9 @@ The plugin will display an error notice if there is **not** a page titled, **The
 Thanks to Andrijana Nikolic at [Web Hosting Geeks](http://webhostinggeeks.com) for translation help.
 
 ## Changelog
+
+#### 1.5.2
+* use class variables to hold title and page data to reduce number of calls to database
 
 #### 1.5.1
 * set `after_theme_setup` hook to use later priority to ensure $_wp_default_headers is set, fixes removal of default images
