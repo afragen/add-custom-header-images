@@ -32,24 +32,28 @@ class Add_Custom_Header_Images {
 	 * Constructor.
 	 */
 	public function __construct() {
-		global $wp_version;
-
 		$the_headers_title      = __( 'The Headers', 'add-custom-header-images' );
 		$this->the_headers_page = get_page_by_title( esc_attr( $the_headers_title ) );
+		$this->run();
+	}
 
+	/**
+	 * Let's get started.
+	 *
+	 * @return bool
+	 */
+	public function run() {
+		global $wp_version;
 		load_plugin_textdomain( 'add-custom-header-images', false, basename( dirname( __FILE__ ) ) );
 
-		if ( is_admin() &&
-		     is_null( $this->the_headers_page ) || ! $wp_version >= 3.4
+		if ( ! $wp_version >= 3.4 || ( is_admin() && null === $this->the_headers_page )
 		) {
 			add_action( 'admin_notices', array( $this, 'headers_page_present' ) );
 
 			return false;
 		}
-
 		add_action( 'after_setup_theme', array( $this, 'new_default_header_images' ), 99 );
 	}
-
 
 	/**
 	 * Disable plugin if 'The Headers' page does not exist.
