@@ -22,13 +22,6 @@
 class Add_Custom_Header_Images {
 
 	/**
-	 * Placeholder for the page title.
-	 *
-	 * @var string|void
-	 */
-	private $the_headers_title;
-
-	/**
 	 * Variable to hold the data for `get_page_by_title()`.
 	 *
 	 * @var array|null|\WP_Post
@@ -41,8 +34,8 @@ class Add_Custom_Header_Images {
 	public function __construct() {
 		global $wp_version;
 
-		$this->the_headers_title = __( 'The Headers', 'add-custom-header-images' );
-		$this->the_headers_page  = get_page_by_title( esc_attr( $this->the_headers_title ) );
+		$the_headers_title      = __( 'The Headers', 'add-custom-header-images' );
+		$this->the_headers_page = get_page_by_title( esc_attr( $the_headers_title ) );
 
 		load_plugin_textdomain( 'add-custom-header-images', false, basename( dirname( __FILE__ ) ) );
 
