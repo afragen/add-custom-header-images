@@ -4,7 +4,7 @@
  * Plugin Name:       Add Custom Header Images
  * Plugin URI:        https://github.com/afragen/add-custom-header-images
  * Description:       Remove default header images and add custom header images. Images must be added to new page titled <strong>The Headers</strong>.  Based upon a post from <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
- * Version:           1.5.2
+ * Version:           1.6.0
  * Author:            Andy Fragen
  * Author URI:        http://thefragens.com
  * License:           GNU General Public License v2
@@ -12,8 +12,8 @@
  * Text Domain:       add-custom-header-images
  * Domain Path:       /languages
  * GitHub Plugin URI: https://github.com/afragen/add-custom-header-images
- * GitHub Branch:     master
  * Requires WP:       3.4.0
+ * Requires PHP:      5.3
  */
 
 
@@ -21,13 +21,6 @@
  * Class Add_Custom_Header_Images
  */
 class Add_Custom_Header_Images {
-
-	/**
-	 * Placeholder for the page title.
-	 *
-	 * @var string|void
-	 */
-	private $the_headers_title;
 
 	/**
 	 * Variable to hold the data for `get_page_by_title()`.
@@ -40,24 +33,28 @@ class Add_Custom_Header_Images {
 	 * Constructor.
 	 */
 	public function __construct() {
+		$the_headers_title      = __( 'The Headers', 'add-custom-header-images' );
+		$this->the_headers_page = get_page_by_title( esc_attr( $the_headers_title ) );
+		$this->run();
+	}
+
+	/**
+	 * Let's get started.
+	 *
+	 * @return bool
+	 */
+	public function run() {
 		global $wp_version;
-
-		$this->the_headers_title = __( 'The Headers', 'add-custom-header-images' );
-		$this->the_headers_page  = get_page_by_title( esc_attr( $this->the_headers_title ) );
-
 		load_plugin_textdomain( 'add-custom-header-images', false, basename( dirname( __FILE__ ) ) );
 
-		if ( is_admin() &&
-		     is_null( $this->the_headers_page ) || ! $wp_version >= 3.4
+		if ( ! $wp_version >= 3.4 || ( is_admin() && null === $this->the_headers_page )
 		) {
 			add_action( 'admin_notices', array( $this, 'headers_page_present' ) );
 
 			return false;
 		}
-
 		add_action( 'after_setup_theme', array( $this, 'new_default_header_images' ), 99 );
 	}
-
 
 	/**
 	 * Disable plugin if 'The Headers' page does not exist.
@@ -87,7 +84,7 @@ class Add_Custom_Header_Images {
 			return false;
 		}
 
-		foreach ( $_wp_default_headers as $key => $value ) {
+		foreach ( (array) $_wp_default_headers as $key => $value ) {
 			if ( ! is_int( $key ) ) {
 				$header_ids[] = $key;
 			}
