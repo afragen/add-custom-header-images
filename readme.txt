@@ -2,8 +2,9 @@
 Contributors: afragen
 Tags: headers, rotate headers, images
 Requires at least: 3.6
-Tested up to: 4.8
-Stable tag: 1.5.2
+Requires PHP: 5.3
+Tested up to: 4.9
+Stable tag: 1.6.0
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -32,6 +33,10 @@ The plugin will display an error notice if there is **not** a page titled, **The
 Thanks to Andrijana Nikolic at [Web Hosting Geeks](http://webhostinggeeks.com) for translation help.
 
 ## Changelog
+
+#### 1.6.0
+* don't run from constructor
+* requires PHP 5.3, sorta
 
 #### 1.5.2
 * use class variables to hold title and page data to reduce number of calls to database
