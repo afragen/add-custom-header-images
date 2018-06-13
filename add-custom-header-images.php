@@ -60,17 +60,9 @@ class Add_Custom_Header_Images {
 	 * Disable plugin if 'The Headers' page does not exist.
 	 */
 	public function headers_page_present() {
-		?>
-		<div class="error notice is-dismissible">
-			<p>
-				<?php printf(
-					esc_html__('Add Custom Header Images requires a page titled %sThe Headers%s with images and WordPress v3.4 or greater.', 'add-custom-header-images'),
-					'<strong>',
-					'</strong>'
-				); ?>
-			</p>
-		</div>
-		<?php
+		echo '<div class="error notice is-dismissible"><p>';
+		esc_html_e( 'Add Custom Header Images requires a page titled <strong>The Headers</strong> with images and WordPress v3.4 or greater.', 'add-custom-header-images' );
+		echo '</p></div>';
 	}
 
 	/**
