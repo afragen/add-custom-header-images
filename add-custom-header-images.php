@@ -4,7 +4,7 @@
  * Plugin Name:       Add Custom Header Images
  * Plugin URI:        https://github.com/afragen/add-custom-header-images
  * Description:       Remove default header images and add custom header images. Images must be added to new page titled <strong>The Headers</strong>.  Based upon a post from <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
- * Version:           1.7.0
+ * Version:           1.7.0.1
  * Author:            Andy Fragen
  * Author URI:        http://thefragens.com
  * License:           GNU General Public License v2
@@ -31,8 +31,8 @@ class Add_Custom_Header_Images {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$the_headers_title      = __('The Headers', 'add-custom-header-images');
-		$this->the_headers_page = get_page_by_title(esc_attr($the_headers_title));
+		$the_headers_title      = __( 'The Headers', 'add-custom-header-images' );
+		$this->the_headers_page = get_page_by_title( esc_attr( $the_headers_title ) );
 		$this->run();
 	}
 
@@ -43,16 +43,16 @@ class Add_Custom_Header_Images {
 	 */
 	public function run() {
 		global $wp_version;
-		load_plugin_textdomain('add-custom-header-images', false, basename(dirname(__FILE__)));
+		load_plugin_textdomain( 'add-custom-header-images', false, basename( dirname( __FILE__ ) ) );
 
-		if ($wp_version < 3.4 || (is_admin() && null === $this->the_headers_page)
+		if ( $wp_version < 3.4 || ( is_admin() && null === $this->the_headers_page )
 		) {
-			add_action('admin_notices', array( $this, 'headers_page_present' ));
+			add_action( 'admin_notices', array( $this, 'headers_page_present' ) );
 
 			return false;
 		}
-		if (! is_admin()) {
-			add_action('after_setup_theme', array( $this, 'new_default_header_images' ), 99);
+		if ( ! is_admin() ) {
+			add_action( 'after_setup_theme', array( $this, 'new_default_header_images' ), 99 );
 		}
 	}
 
@@ -70,18 +70,18 @@ class Add_Custom_Header_Images {
 	 */
 	public function remove_default_header_images() {
 		global $_wp_default_headers;
-		if (empty($_wp_default_headers)) {
+		if ( empty( $_wp_default_headers ) ) {
 			return false;
 		}
 
 		$header_ids = array();
-		foreach ((array) array_keys($_wp_default_headers) as $key) {
-			if (! is_int($key)) {
+		foreach ( (array) array_keys( $_wp_default_headers ) as $key ) {
+			if ( ! is_int( $key ) ) {
 				$header_ids[] = $key;
 			}
 		}
 
-		unregister_default_headers($header_ids);
+		unregister_default_headers( $header_ids );
 	}
 
 	/**
@@ -90,7 +90,7 @@ class Add_Custom_Header_Images {
 	 * @link http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/
 	 */
 	public function new_default_header_images() {
-		if (! $this->the_headers_page instanceof \WP_Post) {
+		if ( ! $this->the_headers_page instanceof \WP_Post ) {
 			return false;
 		}
 
@@ -108,12 +108,12 @@ class Add_Custom_Header_Images {
 		);
 		$images       = $images_query->posts;
 
-		if (empty($images)) {
+		if ( empty( $images ) ) {
 			return false;
 		}
 
-		foreach ($images as $image) {
-			$thumb = wp_get_attachment_image_src($image->ID, 'medium');
+		foreach ( $images as $image ) {
+			$thumb = wp_get_attachment_image_src( $image->ID, 'medium' );
 
 			$headers[] = array(
 				'url'           => $image->guid,
@@ -123,7 +123,7 @@ class Add_Custom_Header_Images {
 			);
 		}
 
-		register_default_headers($headers);
+		register_default_headers( $headers );
 	}
 }
 

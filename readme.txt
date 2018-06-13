@@ -34,6 +34,9 @@ Thanks to Andrijana Nikolic at [Web Hosting Geeks](http://webhostinggeeks.com) f
 
 ## Changelog
 
+#### [unreleased]
+* simplify admin notice
+
 #### 1.7.0
 * use WP_Query instead of `get_children()`
 * only load `after_theme_setup` hook on front end
