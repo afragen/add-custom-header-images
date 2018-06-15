@@ -61,7 +61,7 @@ class Add_Custom_Header_Images {
 	 */
 	public function headers_page_present() {
 		echo '<div class="error notice is-dismissible"><p>';
-		esc_html_e( 'Add Custom Header Images requires a page titled <strong>The Headers</strong> with images and WordPress v3.4 or greater.', 'add-custom-header-images' );
+		echo( wp_kses_post( __( 'Add Custom Header Images requires a page titled <strong>The Headers</strong> with images and WordPress v3.4 or greater.', 'add-custom-header-images' ) ) );
 		echo '</p></div>';
 	}
 
