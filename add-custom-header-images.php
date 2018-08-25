@@ -116,7 +116,7 @@ class Add_Custom_Header_Images {
 			$thumb = wp_get_attachment_image_src( $image->ID, 'medium' );
 
 			$headers[] = array(
-				'url'           => $image->guid,
+				'url'           => wp_get_attachment_url($image->ID),
 				'thumbnail_url' => $thumb[0],
 				'description'   => $image->post_title,
 				'attachment_id' => $image->ID,
