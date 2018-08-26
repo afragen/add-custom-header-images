@@ -42,10 +42,9 @@ class Add_Custom_Header_Images {
 	 * @return bool
 	 */
 	public function run() {
-		global $wp_version;
-		load_plugin_textdomain( 'add-custom-header-images', false, basename( dirname( __FILE__ ) ) );
+		load_plugin_textdomain( 'add-custom-header-images', false, basename( __DIR__ ) );
 
-		if ( $wp_version < 3.4 || ( is_admin() && null === $this->the_headers_page )
+		if ( ( is_admin() && null === $this->the_headers_page )
 		) {
 			add_action( 'admin_notices', array( $this, 'headers_page_present' ) );
 
