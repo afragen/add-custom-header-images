@@ -36,6 +36,8 @@ Thanks to Andrijana Nikolic at [Web Hosting Geeks](http://webhostinggeeks.com) f
 
 #### [unreleased]
 * simplify admin notice
+* WPCS compliant
+* fixed to use `wp_get_attachment_url()`, thanks @poulh
 
 #### 1.7.0
 * use WP_Query instead of `get_children()`
