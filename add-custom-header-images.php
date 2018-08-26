@@ -46,7 +46,7 @@ class Add_Custom_Header_Images {
 
 		if ( ( is_admin() && null === $this->the_headers_page )
 		) {
-			add_action( 'admin_notices', array( $this, 'headers_page_present' ) );
+			add_action( 'admin_notices', array( $this, 'headers_page_not_present' ) );
 
 			return false;
 		}
@@ -58,7 +58,7 @@ class Add_Custom_Header_Images {
 	/**
 	 * Disable plugin if 'The Headers' page does not exist.
 	 */
-	public function headers_page_present() {
+	public function headers_page_not_present() {
 		echo '<div class="error notice is-dismissible"><p>';
 		echo( wp_kses_post( __( 'Add Custom Header Images requires a page titled <strong>The Headers</strong> with images and WordPress v3.4 or greater.', 'add-custom-header-images' ) ) );
 		echo '</p></div>';
