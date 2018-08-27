@@ -4,7 +4,7 @@ Tags: headers, rotate headers, images
 Requires at least: 3.6
 Requires PHP: 5.3
 Tested up to: 4.9
-Stable tag: 1.7.0
+Stable tag: 1.8.0
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -35,6 +35,8 @@ Thanks to Andrijana Nikolic at [Web Hosting Geeks](http://webhostinggeeks.com) f
 ## Changelog
 
 #### [unreleased]
+
+#### 1.8.0
 * simplify admin notice
 * WPCS compliant
 * fixed to use `wp_get_attachment_url()`, thanks @poulh
