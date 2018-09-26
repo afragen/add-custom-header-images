@@ -35,6 +35,7 @@ Thanks to Andrijana Nikolic at [Web Hosting Geeks](http://webhostinggeeks.com) f
 ## Changelog
 
 #### [unreleased]
+* correctly initialize `load_plugin_textdomain()`
 
 #### 1.8.0
 * simplify admin notice
