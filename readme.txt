@@ -3,11 +3,11 @@ Contributors: afragen
 Tags: headers, rotate headers, images
 Requires at least: 3.6
 Requires PHP: 5.3
-Tested up to: 4.9
-Stable tag: 1.8.0
+Tested up to: 5.0
+Stable tag: 1.8.1
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Remove default header images and load custom header images from 'The Headers' page. Allows for easy selection of random header images in your theme.
 
@@ -35,6 +35,8 @@ Thanks to Andrijana Nikolic at [Web Hosting Geeks](http://webhostinggeeks.com) f
 ## Changelog
 
 #### [unreleased]
+
+#### 1.8.1
 * correctly initialize `load_plugin_textdomain()`
 
 #### 1.8.0
