@@ -4,7 +4,7 @@ Tags: headers, rotate headers, images
 Requires at least: 3.6
 Requires PHP: 5.3
 Tested up to: 5.3
-Stable tag: 1.8.1
+Stable tag: 1.9.0
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -35,6 +35,9 @@ Thanks to Andrijana Nikolic at [Web Hosting Geeks](http://webhostinggeeks.com) f
 ## Changelog
 
 #### [unreleased]
+
+#### 1.9.0
+* always load `after_theme_setup` filter
 
 #### 1.8.1
 * correctly initialize `load_plugin_textdomain()`
