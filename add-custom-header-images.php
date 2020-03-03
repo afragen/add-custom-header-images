@@ -50,7 +50,7 @@ class Add_Custom_Header_Images {
 	public function run() {
 		add_action(
 			'init',
-			function() {
+			function () {
 				load_plugin_textdomain( 'add-custom-header-images', false, basename( __DIR__ ) );
 			}
 		);
@@ -70,7 +70,7 @@ class Add_Custom_Header_Images {
 	 */
 	public function headers_page_not_present() {
 		echo '<div class="error notice is-dismissible"><p>';
-		echo( wp_kses_post( __( 'Add Custom Header Images requires a page titled <strong>The Headers</strong>.', 'add-custom-header-images' ) ) );
+		echo wp_kses_post( __( 'Add Custom Header Images requires a page titled <strong>The Headers</strong>.', 'add-custom-header-images' ) );
 		echo '</p></div>';
 	}
 
@@ -146,7 +146,6 @@ class Add_Custom_Header_Images {
 			$this->header_image = get_header_image();
 
 			if ( ! function_exists( 'wp_body_open' ) ) {
-
 				/**
 				 * Shim for wp_body_open, ensuring backward compatibility with versions of WordPress older than 5.2.
 				 */
@@ -157,7 +156,7 @@ class Add_Custom_Header_Images {
 
 			add_action(
 				'wp_body_open',
-				function() {
+				function () {
 					echo '<header><img src=' . $this->header_image . '></header>';
 				}
 			);
