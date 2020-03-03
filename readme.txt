@@ -36,6 +36,7 @@ Thanks to Andrijana Nikolic at [Web Hosting Geeks](http://webhostinggeeks.com) f
 
 #### [unreleased]
 * add header image support to theme if none exists
+* scrape images from page blocks
 
 #### 1.9.0
 * always load `after_theme_setup` filter

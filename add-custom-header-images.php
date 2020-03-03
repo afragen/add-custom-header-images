@@ -3,7 +3,7 @@
  * Plugin Name:       Add Custom Header Images
  * Plugin URI:        https://github.com/afragen/add-custom-header-images
  * Description:       Remove default header images and add custom header images. Images must be added to new page titled <strong>The Headers</strong>.  Based upon a post from <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
- * Version:           1.9.0
+ * Version:           1.9.0.2
  * Author:            Andy Fragen
  * Author URI:        https://thefragens.com
  * License:           GNU General Public License v2
@@ -115,7 +115,17 @@ class Add_Custom_Header_Images {
 				'orderby'        => 'menu_order ID',
 			]
 		);
-		$images       = $images_query->posts;
+
+		// Get images from blocks.
+		preg_match_all( '|id":(\d+)|', $this->the_headers_page->post_content, $matches );
+		foreach ( $matches[1] as $id ) {
+			$blocks[] = (object) [
+				'ID'         => (int) $id,
+				'post_title' => get_the_title( $id ),
+			];
+		}
+
+		$images = array_merge( $images_query->posts, $blocks );
 
 		if ( empty( $images ) ) {
 			return false;
@@ -130,9 +140,37 @@ class Add_Custom_Header_Images {
 				'description'   => $image->post_title,
 				'attachment_id' => $image->ID,
 			];
+
+			$image_ids[] = $image->ID;
 		}
 
+		$headers = $this->filter_headers( $headers, $image_ids );
+
 		register_default_headers( $headers );
+	}
+
+	/**
+	 * Remove duplicate $headers.
+	 *
+	 * @param array $headers   Array of image data.
+	 * @param array $image_ids Array of image IDs.
+	 *
+	 * @return void
+	 */
+	private function filter_headers( $headers, $image_ids ) {
+		$image_ids = array_flip( array_unique( $image_ids ) );
+		$headers   = array_filter(
+			$headers,
+			function ( $id ) use ( &$image_ids ) {
+				if ( array_key_exists( $id['attachment_id'], $image_ids ) ) {
+					unset( $image_ids[ $id['attachment_id'] ] );
+
+					return $id;
+				}
+			}
+		);
+
+		return $headers;
 	}
 
 	/**
