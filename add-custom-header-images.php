@@ -11,8 +11,8 @@
  * Text Domain:       add-custom-header-images
  * Domain Path:       /languages
  * GitHub Plugin URI: https://github.com/afragen/add-custom-header-images
- * Requires at least: 3.4
- * Requires PHP:      5.3
+ * Requires at least: 4.8
+ * Requires PHP:      5.6
  */
 
 /**
@@ -25,6 +25,13 @@ class Add_Custom_Header_Images {
 	 * @var array|null|\WP_Post
 	 */
 	private $the_headers_page;
+
+	/**
+	 * Variable to hold header image URL.
+	 *
+	 * @var string
+	 */
+	public $header_image;
 
 	/**
 	 * Constructor.
@@ -50,11 +57,12 @@ class Add_Custom_Header_Images {
 
 		if ( ( is_admin() && null === $this->the_headers_page )
 		) {
-			add_action( 'admin_notices', array( $this, 'headers_page_not_present' ) );
+			add_action( 'admin_notices', [ $this, 'headers_page_not_present' ] );
 
 			return false;
 		}
-		add_action( 'after_setup_theme', array( $this, 'new_default_header_images' ), 99 );
+		add_action( 'after_setup_theme', [ $this, 'new_default_header_images' ], 99 );
+		add_action( 'after_setup_theme', [ $this, 'setup_default_header_image' ], 100 );
 	}
 
 	/**
@@ -75,7 +83,7 @@ class Add_Custom_Header_Images {
 			return false;
 		}
 
-		$header_ids = array();
+		$header_ids = [];
 		foreach ( (array) array_keys( $_wp_default_headers ) as $key ) {
 			if ( ! is_int( $key ) ) {
 				$header_ids[] = $key;
@@ -96,16 +104,16 @@ class Add_Custom_Header_Images {
 		}
 
 		$this->remove_default_header_images();
-		$headers      = array();
+		$headers      = [];
 		$images_query = new \WP_Query(
-			array(
+			[
 				'post_parent'    => $this->the_headers_page->ID,
 				'post_status'    => 'inherit',
 				'post_type'      => 'attachment',
 				'post_mime_type' => 'image',
 				'order'          => 'ASC',
 				'orderby'        => 'menu_order ID',
-			)
+			]
 		);
 		$images       = $images_query->posts;
 
@@ -116,15 +124,63 @@ class Add_Custom_Header_Images {
 		foreach ( $images as $image ) {
 			$thumb = wp_get_attachment_image_src( $image->ID, 'medium' );
 
-			$headers[] = array(
+			$headers[] = [
 				'url'           => wp_get_attachment_url( $image->ID ),
 				'thumbnail_url' => $thumb[0],
 				'description'   => $image->post_title,
 				'attachment_id' => $image->ID,
-			);
+			];
 		}
 
 		register_default_headers( $headers );
+	}
+
+	/**
+	 * Add default header image if theme doesn't support it.
+	 *
+	 * @return void
+	 */
+	public function setup_default_header_image() {
+		if ( ! current_theme_supports( 'custom-header' ) ) {
+			add_theme_support( 'custom-header' );
+			$this->header_image = get_header_image();
+
+			if ( ! function_exists( 'wp_body_open' ) ) {
+
+				/**
+				 * Shim for wp_body_open, ensuring backward compatibility with versions of WordPress older than 5.2.
+				 */
+				function wp_body_open() {
+					do_action( 'wp_body_open' );
+				}
+			}
+
+			add_action(
+				'wp_body_open',
+				function() {
+					echo '<header><img src=' . $this->header_image . '></header>';
+				}
+			);
+			add_action( 'wp_head', [ $this, 'header_image_style' ] );
+		}
+	}
+
+	/**
+	 * Header image CSS styling.
+	 *
+	 * @return void
+	 */
+	public function header_image_style() {
+		?>
+			<style>
+			header > img {
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				width: 90%;
+			}
+			</style>
+		<?php
 	}
 }
 
