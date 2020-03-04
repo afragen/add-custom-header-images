@@ -1,9 +1,14 @@
 <?php
 /**
+ * Add Custom Header Images
+ *
+ * @package wordpress-plugin
+ * @link http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/
+ *
  * Plugin Name:       Add Custom Header Images
  * Plugin URI:        https://github.com/afragen/add-custom-header-images
  * Description:       Remove default header images and add custom header images. Images must be added to new page titled <strong>The Headers</strong>.  Based upon a post from <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
- * Version:           1.9.0.2
+ * Version:           1.9.0.3
  * Author:            Andy Fragen
  * Author URI:        https://thefragens.com
  * License:           GNU General Public License v2
@@ -95,8 +100,6 @@ class Add_Custom_Header_Images {
 
 	/**
 	 * Add new default header images.
-	 *
-	 * @link http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/
 	 */
 	public function new_default_header_images() {
 		if ( ! $this->the_headers_page instanceof \WP_Post ) {
@@ -104,10 +107,22 @@ class Add_Custom_Header_Images {
 		}
 
 		$this->remove_default_header_images();
-		$headers      = [];
-		$images_query = new \WP_Query(
+		$header_images = $this->get_images_from_post( $this->the_headers_page );
+
+		register_default_headers( $header_images );
+	}
+
+	/**
+	 * Get images from attachments and blocks.
+	 *
+	 * @param  \WP_Post $post Post object.
+	 * @return array    $headers
+	 */
+	private function get_images_from_post( \WP_Post $post ) {
+		$header_images = [];
+		$images_query  = new \WP_Query(
 			[
-				'post_parent'    => $this->the_headers_page->ID,
+				'post_parent'    => $post->ID,
 				'post_status'    => 'inherit',
 				'post_type'      => 'attachment',
 				'post_mime_type' => 'image',
@@ -117,50 +132,52 @@ class Add_Custom_Header_Images {
 		);
 
 		// Get images from blocks.
-		preg_match_all( '|id":(\d+)|', $this->the_headers_page->post_content, $matches );
-		foreach ( $matches[1] as $id ) {
+		$parsed_blocks = \parse_blocks( $post->post_content );
+		$parsed_images = array_filter(
+			$parsed_blocks,
+			function ( $block ) {
+				return 'core/image' === $block['blockName'];
+			}
+		);
+
+		foreach ( $parsed_images as $block ) {
+			$id       = $block['attrs']['id'];
 			$blocks[] = (object) [
-				'ID'         => (int) $id,
+				'ID'         => $id,
 				'post_title' => get_the_title( $id ),
 			];
 		}
 
 		$images = array_merge( $images_query->posts, $blocks );
 
-		if ( empty( $images ) ) {
-			return false;
-		}
-
+		// Make default header image arrays.
 		foreach ( $images as $image ) {
-			$thumb = wp_get_attachment_image_src( $image->ID, 'medium' );
-
-			$headers[] = [
+			$thumb           = wp_get_attachment_image_src( $image->ID, 'medium' );
+			$header_images[] = [
 				'url'           => wp_get_attachment_url( $image->ID ),
 				'thumbnail_url' => $thumb[0],
 				'description'   => $image->post_title,
 				'attachment_id' => $image->ID,
 			];
-
-			$image_ids[] = $image->ID;
+			$image_ids[]     = $image->ID;
 		}
 
-		$headers = $this->filter_headers( $headers, $image_ids );
+		$header_images = $this->filter_headers( $header_images, $image_ids );
 
-		register_default_headers( $headers );
+		return $header_images;
 	}
 
 	/**
 	 * Remove duplicate $headers.
 	 *
-	 * @param array $headers   Array of image data.
-	 * @param array $image_ids Array of image IDs.
-	 *
-	 * @return void
+	 * @param  array $images    Array of image data.
+	 * @param  array $image_ids Array of image IDs.
+	 * @return array $images
 	 */
-	private function filter_headers( $headers, $image_ids ) {
+	private function filter_headers( $images, $image_ids ) {
 		$image_ids = array_flip( array_unique( $image_ids ) );
-		$headers   = array_filter(
-			$headers,
+		$images    = array_filter(
+			$images,
 			function ( $id ) use ( &$image_ids ) {
 				if ( array_key_exists( $id['attachment_id'], $image_ids ) ) {
 					unset( $image_ids[ $id['attachment_id'] ] );
@@ -170,7 +187,7 @@ class Add_Custom_Header_Images {
 			}
 		);
 
-		return $headers;
+		return $images;
 	}
 
 	/**
@@ -195,7 +212,7 @@ class Add_Custom_Header_Images {
 			add_action(
 				'wp_body_open',
 				function () {
-					echo '<header><img src=' . $this->header_image . '></header>';
+					echo '<header><img src=' . esc_attr( $this->header_image ) . '></header>';
 				}
 			);
 			add_action( 'wp_head', [ $this, 'header_image_style' ] );
