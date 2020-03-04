@@ -1,10 +1,10 @@
 # Add Custom Header Images
 Contributors: afragen
 Tags: headers, rotate headers, images
-Requires at least: 3.6
-Requires PHP: 5.3
-Tested up to: 5.3
-Stable tag: 1.9.0
+Requires at least: 5.0
+Requires PHP: 5.6
+Tested up to: 5.4
+Stable tag: 2.0.0
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@ Remove default header images and load custom header images from 'The Headers' pa
 
 A plugin that should be able to remove default headers for a theme and add custom headers based upon the article written by <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a> who was inspired by <a href="http://wpti.ps/?p=107">wpti.ps</a>.
 
-Create a Page named **The Headers**. Then upload header images (media files) to the the page. The page may have a visibility of private.
+Create a Page named **The Headers**. Then upload header images (media files) to the the page. The page may have a visibility of private. All images displayed on the page will be parsed, those attached to the page and those added via image blocks.
 
 Once the custom header images are loaded, just go to `Appearance > Header` or `Customize > Header Image` and select `Randomize suggested headers`.
 
@@ -35,6 +35,11 @@ Thanks to Andrijana Nikolic at [Web Hosting Geeks](http://webhostinggeeks.com) f
 ## Changelog
 
 #### [unreleased]
+
+#### 2.0.0 / 2020-03-03
+* add header image support to theme if none exists
+* parse images from page blocks
+* refactor class methods
 
 #### 1.9.0
 * always load `after_theme_setup` filter
