@@ -1,10 +1,10 @@
 # Add Custom Header Images
 Contributors: afragen
 Tags: headers, rotate headers, images
-Requires at least: 4.8
+Requires at least: 5.0
 Requires PHP: 5.6
 Tested up to: 5.4
-Stable tag: 1.9.0
+Stable tag: 2.0.0
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -35,6 +35,8 @@ Thanks to Andrijana Nikolic at [Web Hosting Geeks](http://webhostinggeeks.com) f
 ## Changelog
 
 #### [unreleased]
+
+#### 2.0.0 / 2020-03-03
 * add header image support to theme if none exists
 * parse images from page blocks
 * refactor class methods
