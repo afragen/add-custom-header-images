@@ -35,6 +35,7 @@ Thanks to Andrijana Nikolic at [Web Hosting Geeks](http://webhostinggeeks.com) f
 ## Changelog
 
 #### [unreleased]
+* initialize some variables
 
 #### 2.0.1 / 2020-03-03
 * add header image support to theme if none exists
