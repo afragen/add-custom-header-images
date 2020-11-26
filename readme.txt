@@ -3,7 +3,7 @@ Contributors: afragen
 Tags: headers, rotate headers, images
 Requires at least: 5.0
 Requires PHP: 5.6
-Tested up to: 5.5
+Tested up to: 5.6
 Stable tag: 2.0.3
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
