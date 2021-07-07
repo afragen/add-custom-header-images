@@ -1,39 +1,3 @@
-# Add Custom Header Images
-Contributors: afragen
-Tags: headers, rotate headers, images
-Requires at least: 5.0
-Requires PHP: 5.6
-Tested up to: 5.8
-Stable tag: 2.1.0
-Plugin URI: https://github.com/afragen/add-custom-header-images
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
-
-Remove default header images and load custom header images from 'The Headers' page. Allows for easy selection of random header images in your theme.
-
-## Description
-
-A plugin that should be able to remove default headers for a theme and add custom headers based upon the article written by <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a> who was inspired by <a href="http://wpti.ps/?p=107">wpti.ps</a>.
-
-Create a Page named **The Headers**. Then upload header images (media files) to the the page. The page may have a visibility of private. All images displayed on the page will be parsed, those attached to the page and those added via image blocks.
-
-Once the custom header images are loaded, just go to `Appearance > Header` or `Customize > Header Image` and select `Randomize suggested headers`.
-
-The plugin will display an error notice if there is **not** a page titled, **The Headers**.
-
-## Installation
-
-1. Create a new page. It can be private. It must be titled `The Headers`. Add any images that you want to use as custom header images to this page. Header images should be cropped appropriately for the base theme.
-2. Upload `add-custom-header-images` directory to the `/wp-content/plugins/` directory
-3. Activate the plugin through the 'Plugins' menu in WordPress
-4. Go to `Appearance > Header` or `Customize > Header Image` and select `Randomize` from the Default Images section.
-
-## Attribution
-
-Thanks to Andrijana Nikolic at [Web Hosting Geeks](http://webhostinggeeks.com) for translation help.
-
-## Changelog
-
 #### [unreleased]
 
 #### 2.1.0 / 2021-07-07
