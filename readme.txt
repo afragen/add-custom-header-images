@@ -3,8 +3,8 @@ Contributors: afragen
 Tags: headers, rotate headers, images
 Requires at least: 5.0
 Requires PHP: 5.6
-Tested up to: 5.8
-Stable tag: 2.1.0
+Tested up to: 5.9
+Stable tag: 2.2.0
 Plugin URI: https://github.com/afragen/add-custom-header-images
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -20,6 +20,8 @@ Create a Page named **The Headers**. Then upload header images (media files) to 
 Once the custom header images are loaded, just go to `Appearance > Header` or `Customize > Header Image` and select `Randomize suggested headers`.
 
 The plugin will display an error notice if there is **not** a page titled, **The Headers**.
+
+Not compatible with block based themes.
 
 ## Installation
 
