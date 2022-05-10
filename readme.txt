@@ -21,8 +21,6 @@ Once the custom header images are loaded, just go to `Appearance > Header` or `C
 
 The plugin will display an error notice if there is **not** a page titled, **The Headers**.
 
-Not compatible with block based themes.
-
 ## Installation
 
 1. Create a new page. It can be private. It must be titled `The Headers`. Add any images that you want to use as custom header images to this page. Header images should be cropped appropriately for the base theme.
