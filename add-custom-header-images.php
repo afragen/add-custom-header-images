@@ -42,14 +42,6 @@ class Add_Custom_Header_Images {
 	 * Constructor.
 	 */
 	public function __construct() {
-		if ( wp_is_block_theme() ) {
-			if ( ! function_exists( 'deactivate_plugins' ) ) {
-				require_once ABSPATH . 'wp-admin/includes/plugin.php';
-				deactivate_plugins( __FILE__ );
-				return;
-			}
-		}
-
 		$the_headers_title      = __( 'The Headers', 'add-custom-header-images' );
 		$this->the_headers_page = get_page_by_title( esc_attr( $the_headers_title ) );
 		$this->run();
