@@ -1,5 +1,4 @@
 #### [unreleased]
-* not compatible with block themes, deactivate and exit
 
 #### 2.1.0 / 2021-07-07
 * add @10up GitHub Actions for SVN
