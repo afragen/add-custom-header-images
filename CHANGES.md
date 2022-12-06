@@ -1,4 +1,5 @@
 #### [unreleased]
+* update GitHub Actions
 
 #### 2.1.0 / 2021-07-07
 * add @10up GitHub Actions for SVN
