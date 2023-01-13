@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 2.2.0 / 2023-01-13
 * update GitHub Actions
 * update to add alt text to header image
 
