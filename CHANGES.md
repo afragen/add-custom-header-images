@@ -1,5 +1,9 @@
 #### [unreleased]
 
+#### 2.2.0 / 2023-01-13
+* update GitHub Actions
+* update to add alt text to header image
+
 #### 2.1.0 / 2021-07-07
 * add @10up GitHub Actions for SVN
 

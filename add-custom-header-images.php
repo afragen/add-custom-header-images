@@ -8,7 +8,7 @@
  * Plugin Name:       Add Custom Header Images
  * Plugin URI:        https://github.com/afragen/add-custom-header-images
  * Description:       Remove default header images and add custom header images. Images must be added to new page titled <strong>The Headers</strong>.  Based upon a post from <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
- * Version:           2.1.0
+ * Version:           2.2.0
  * Author:            Andy Fragen
  * Author URI:        https://thefragens.com
  * License:           GNU General Public License v2
@@ -16,7 +16,7 @@
  * Text Domain:       add-custom-header-images
  * Domain Path:       /languages
  * GitHub Plugin URI: https://github.com/afragen/add-custom-header-images
- * Requires at least: 5.0
+ * Requires at least: 5.2
  * Requires PHP:      5.6
  */
 
@@ -37,6 +37,20 @@ class Add_Custom_Header_Images {
 	 * @var string
 	 */
 	public $header_image;
+
+	/**
+	 * Variable to hold header images.
+	 *
+	 * @var array
+	 */
+	public $header_images;
+
+	/**
+	 * Variable to hold image attributes.
+	 *
+	 * @var array
+	 */
+	private $image_attr;
 
 	/**
 	 * Constructor.
@@ -68,6 +82,7 @@ class Add_Custom_Header_Images {
 		}
 		add_action( 'after_setup_theme', [ $this, 'new_default_header_images' ], 99 );
 		add_action( 'after_setup_theme', [ $this, 'setup_default_header_image' ], 100 );
+		add_filter( 'wp_get_attachment_image_attributes', [ $this, 'get_image_attributes' ], 100, 3 );
 	}
 
 	/**
@@ -154,17 +169,19 @@ class Add_Custom_Header_Images {
 		$header_images = [];
 		$image_ids     = [];
 		foreach ( $images as $image ) {
-			$thumb           = wp_get_attachment_image_src( $image->ID, 'medium' );
+			$thumb           = wp_get_attachment_image( $image->ID, 'medium' );
 			$header_images[] = [
 				'url'           => wp_get_attachment_url( $image->ID ),
 				'thumbnail_url' => isset( $thumb[0] ) ? $thumb[0] : null,
 				'description'   => $image->post_title,
 				'attachment_id' => $image->ID,
+				'alt_text'      => $this->image_attr['alt'],
 			];
 			$image_ids[]     = $image->ID;
 		}
 
-		$header_images = $this->filter_headers( $header_images, $image_ids );
+		$header_images       = $this->filter_headers( $header_images, $image_ids );
+		$this->header_images = $header_images;
 
 		return $header_images;
 	}
@@ -211,14 +228,47 @@ class Add_Custom_Header_Images {
 				}
 			}
 
+			$alt_text = array_map(
+				function( $img_arr ) {
+					if ( $this->header_image === $img_arr['url'] ) {
+						return $img_arr['alt_text'];
+					}
+				},
+				$this->header_images
+			);
+
+			$alt_text = array_filter( $alt_text );
+			$alt_text = array_pop( $alt_text );
+
 			add_action(
 				'wp_body_open',
-				function () {
-					echo '<header><img src=' . esc_attr( $this->header_image ) . '></header>';
+				function () use ( $alt_text ) {
+					printf(
+						/* translators: 1: image URL, 2: alt text */
+						'<header><img src="%s" alt="%s"></header>',
+						esc_attr( $this->header_image ),
+						esc_attr( $alt_text )
+					);
 				}
 			);
 			add_action( 'wp_head', [ $this, 'header_image_style' ] );
 		}
+	}
+
+	/**
+	 * Get image attributes.
+	 *
+	 * @param string[]     $attr       Array of attribute values for the image markup, keyed by attribute name.
+	 * @param WP_Post      $attachment Image attachment post.
+	 * @param string|int[] $size       Requested image size. Can be any registered image size name, or
+	 *                                 an array of width and height values in pixels (in that order).
+	 *
+	 * @return array
+	 */
+	public function get_image_attributes( $attr, $attachment, $size ) {
+		$this->image_attr = $attr;
+
+		return $attr;
 	}
 
 	/**
