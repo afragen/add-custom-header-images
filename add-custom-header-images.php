@@ -216,7 +216,7 @@ class Add_Custom_Header_Images {
 			}
 		);
 
-		return $images;
+		return (array) $images;
 	}
 
 	/**
