@@ -56,8 +56,18 @@ class Add_Custom_Header_Images {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$the_headers_title      = __( 'The Headers', 'add-custom-header-images' );
-		$this->the_headers_page = get_page_by_title( esc_attr( $the_headers_title ) );
+		$the_headers_title = __( 'The Headers', 'add-custom-header-images' );
+		if ( ! function_exists( 'is_user_logged_in' ) ) {
+			require_once ABSPATH . WPINC . '/pluggable.php';
+		}
+		$query = new WP_Query(
+			[
+				'post_type' => 'page',
+				'title'     => $the_headers_title,
+			]
+		);
+
+		$this->the_headers_page = $query->post;
 		$this->run();
 	}
 

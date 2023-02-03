@@ -1,5 +1,6 @@
 #### [unreleased]
 * PHP 8.1 compatibility changes
+* update for deprecated `get_page_by_title()`
 
 #### 2.2.0 / 2023-01-13
 * update GitHub Actions
