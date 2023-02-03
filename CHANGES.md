@@ -1,4 +1,5 @@
 #### [unreleased]
+* PHP 8.1 compatibility changes
 
 #### 2.2.0 / 2023-01-13
 * update GitHub Actions
