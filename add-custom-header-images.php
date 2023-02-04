@@ -244,7 +244,7 @@ class Add_Custom_Header_Images {
 						return $img_arr['alt_text'];
 					}
 				},
-				$this->header_images
+				(array) $this->header_images
 			);
 
 			$alt_text = array_filter( $alt_text );
