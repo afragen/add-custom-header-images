@@ -1,7 +1,7 @@
 # Add Custom Header Images
 Contributors: afragen
 Tags: headers, rotate headers, images
-Requires at least: 5.0
+Requires at least: 5.2
 Requires PHP: 5.6
 Tested up to: 6.2
 Stable tag: 2.2.0
@@ -27,10 +27,6 @@ The plugin will display an error notice if there is **not** a page titled, **The
 2. Upload `add-custom-header-images` directory to the `/wp-content/plugins/` directory
 3. Activate the plugin through the 'Plugins' menu in WordPress
 4. Go to `Appearance > Header` or `Customize > Header Image` and select `Randomize` from the Default Images section.
-
-## Attribution
-
-Thanks to Andrijana Nikolic at [Web Hosting Geeks](http://webhostinggeeks.com) for translation help.
 
 ## Changelog
 
