@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 2.3.0 / 2023-02-05
 * PHP 8.1 compatibility changes
 * update for deprecated `get_page_by_title()`
 * start from `plugins_loaded`

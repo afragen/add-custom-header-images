@@ -1,13 +1,13 @@
 # Add Custom Header Images
 Contributors: afragen
+Plugin URI: https://github.com/afragen/add-custom-header-images
 Tags: headers, rotate headers, images
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 5.2
 Requires PHP: 5.6
 Tested up to: 6.2
-Stable tag: 2.2.0
-Plugin URI: https://github.com/afragen/add-custom-header-images
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Stable tag: 2.3.0
 
 ## Description
 
@@ -31,6 +31,11 @@ The plugin will display an error notice if there is **not** a page titled, **The
 ## Changelog
 
 #### [unreleased]
+
+#### 2.3.0 / 2023-02-05
+* PHP 8.1 compatibility changes
+* update for deprecated `get_page_by_title()`
+* start from `plugins_loaded`
 
 #### 2.2.0 / 2023-01-13
 * update GitHub Actions
