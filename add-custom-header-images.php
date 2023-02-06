@@ -8,7 +8,7 @@
  * Plugin Name:       Add Custom Header Images
  * Plugin URI:        https://github.com/afragen/add-custom-header-images
  * Description:       Remove default header images and add custom header images. Images must be added to new page titled <strong>The Headers</strong>.  Based upon a post from <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
- * Version:           2.2.0
+ * Version:           2.3.0
  * Author:            Andy Fragen
  * Author URI:        https://thefragens.com
  * License:           GNU General Public License v2
@@ -56,8 +56,15 @@ class Add_Custom_Header_Images {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$the_headers_title      = __( 'The Headers', 'add-custom-header-images' );
-		$this->the_headers_page = get_page_by_title( esc_attr( $the_headers_title ) );
+		$the_headers_title = __( 'The Headers', 'add-custom-header-images' );
+		$query             = new WP_Query(
+			[
+				'post_type' => 'page',
+				'title'     => $the_headers_title,
+			]
+		);
+
+		$this->the_headers_page = $query->post;
 		$this->run();
 	}
 
@@ -172,7 +179,7 @@ class Add_Custom_Header_Images {
 			$thumb           = wp_get_attachment_image( $image->ID, 'medium' );
 			$header_images[] = [
 				'url'           => wp_get_attachment_url( $image->ID ),
-				'thumbnail_url' => isset( $thumb[0] ) ? $thumb[0] : null,
+				'thumbnail_url' => isset( $thumb[0] ) ? $thumb[0] : '',
 				'description'   => $image->post_title,
 				'attachment_id' => $image->ID,
 				'alt_text'      => $this->image_attr['alt'],
@@ -206,7 +213,7 @@ class Add_Custom_Header_Images {
 			}
 		);
 
-		return $images;
+		return (array) $images;
 	}
 
 	/**
@@ -234,7 +241,7 @@ class Add_Custom_Header_Images {
 						return $img_arr['alt_text'];
 					}
 				},
-				$this->header_images
+				(array) $this->header_images
 			);
 
 			$alt_text = array_filter( $alt_text );
@@ -290,4 +297,9 @@ class Add_Custom_Header_Images {
 	}
 }
 
-new Add_Custom_Header_Images();
+add_action(
+	'plugins_loaded',
+	function() {
+		new Add_Custom_Header_Images();
+	}
+);
