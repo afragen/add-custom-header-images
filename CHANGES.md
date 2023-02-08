@@ -1,5 +1,8 @@
 #### [unreleased]
 
+#### 2.3.1 / 2023-02-08
+* fix to use public or private pages
+
 #### 2.3.0 / 2023-02-05
 * PHP 8.1 compatibility changes
 * update for deprecated `get_page_by_title()`
