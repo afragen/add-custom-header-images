@@ -7,7 +7,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 5.2
 Requires PHP: 5.6
 Tested up to: 6.2
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 
 ## Description
 
@@ -31,6 +31,9 @@ The plugin will display an error notice if there is **not** a page titled, **The
 ## Changelog
 
 #### [unreleased]
+
+#### 2.3.2 / 2023-02-08
+* improve WP_Query for single call
 
 #### 2.3.1 / 2023-02-08
 * fix to use public or private pages
