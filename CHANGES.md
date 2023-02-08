@@ -1,4 +1,5 @@
 #### [unreleased]
+* use 'all' over 'any' in query, perhaps better
 
 #### 2.3.2 / 2023-02-08
 * improve WP_Query for single call
