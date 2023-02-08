@@ -1,5 +1,8 @@
 #### [unreleased]
 
+#### 2.3.2 / 2023-02-08
+* improve WP_Query for single call
+
 #### 2.3.1 / 2023-02-08
 * fix to use public or private pages
 
