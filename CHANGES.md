@@ -1,7 +1,6 @@
 #### [unreleased]
 * use 'all' over 'any' in query, perhaps better
-* use `wp_get_attachment_image_src()` to directly get thumbnail src
-* call `wp_get_attachment_image()` to populate attributes for alt text
+* call `wp_get_attachment_image()` to populate specific attributes
 
 #### 2.3.2 / 2023-02-08
 * improve WP_Query for single call
