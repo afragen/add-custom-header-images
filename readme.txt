@@ -7,7 +7,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 5.2
 Requires PHP: 5.6
 Tested up to: 6.3
-Stable tag: 2.3.2
+Stable tag: 2.3.3
 
 ## Description
 
@@ -30,7 +30,9 @@ The plugin will display an error notice if there is **not** a page titled, **The
 
 ## Changelog
 
-#### [unreleased]
+#### 2.3.3 / 2023-07-21
+* use 'all' over 'any' in query, perhaps better
+* call `wp_get_attachment_image()` to populate specific attributes
 
 #### 2.3.2 / 2023-02-08
 * improve WP_Query for single call
