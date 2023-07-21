@@ -20,7 +20,7 @@
     "php": ">=5.6"
   },
   "scripts": {
-    "post-update-cmd": [
+    "make-pot": [
       "wp i18n make-pot . languages/add-custom-header-images.pot"
     ]
   }

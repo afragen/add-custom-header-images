@@ -8,7 +8,7 @@
  * Plugin Name:       Add Custom Header Images
  * Plugin URI:        https://github.com/afragen/add-custom-header-images
  * Description:       Remove default header images and add custom header images. Images must be added to new page titled <strong>The Headers</strong>.  Based upon a post from <a href="http://juliobiason.net/2011/10/25/twentyeleven-with-easy-rotating-header-images/">Julio Biason</a>.
- * Version:           2.3.2
+ * Version:           2.3.2.2
  * Author:            Andy Fragen
  * Author URI:        https://thefragens.com
  * License:           GNU General Public License v2
@@ -61,7 +61,7 @@ class Add_Custom_Header_Images {
 			[
 				'post_type'   => 'page',
 				'title'       => $the_headers_title,
-				'post_status' => 'any',
+				'post_status' => 'all',
 			]
 		);
 
@@ -177,10 +177,10 @@ class Add_Custom_Header_Images {
 		$header_images = [];
 		$image_ids     = [];
 		foreach ( $images as $image ) {
-			$thumb           = wp_get_attachment_image( $image->ID, 'medium' );
+			wp_get_attachment_image( $image->ID, 'medium' );
 			$header_images[] = [
 				'url'           => wp_get_attachment_url( $image->ID ),
-				'thumbnail_url' => isset( $thumb[0] ) ? $thumb[0] : '',
+				'thumbnail_url' => $this->image_attr['src'],
 				'description'   => $image->post_title,
 				'attachment_id' => $image->ID,
 				'alt_text'      => $this->image_attr['alt'],

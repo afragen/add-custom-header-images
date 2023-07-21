@@ -1,4 +1,6 @@
 #### [unreleased]
+* use 'all' over 'any' in query, perhaps better
+* call `wp_get_attachment_image()` to populate specific attributes
 
 #### 2.3.2 / 2023-02-08
 * improve WP_Query for single call
