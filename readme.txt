@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 5.2
 Requires PHP: 5.6
-Tested up to: 6.3
+Tested up to: 6.6
 Stable tag: 2.3.3
 
 ## Description
