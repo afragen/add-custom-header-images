@@ -1,4 +1,5 @@
 #### [unreleased]
+* remove `load_plugin_textdomain()`
 
 #### 2.3.3 / 2023-07-21
 * use 'all' over 'any' in query, perhaps better

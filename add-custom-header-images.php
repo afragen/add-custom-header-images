@@ -75,13 +75,6 @@ class Add_Custom_Header_Images {
 	 * @return bool
 	 */
 	public function run() {
-		add_action(
-			'init',
-			function () {
-				load_plugin_textdomain( 'add-custom-header-images', false, basename( __DIR__ ) );
-			}
-		);
-
 		if ( ( is_admin() && null === $this->the_headers_page )
 		) {
 			add_action( 'admin_notices', [ $this, 'headers_page_not_present' ] );
