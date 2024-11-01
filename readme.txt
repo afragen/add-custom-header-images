@@ -6,8 +6,8 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 5.2
 Requires PHP: 5.6
-Tested up to: 6.6
-Stable tag: 2.3.3
+Tested up to: 6.7
+Stable tag: 2.3.4
 
 ## Description
 
@@ -29,6 +29,9 @@ The plugin will display an error notice if there is **not** a page titled, **The
 4. Go to `Appearance > Header` or `Customize > Header Image` and select `Randomize` from the Default Images section.
 
 ## Changelog
+
+#### 2.3.4 / 2024-11-01
+* remove `load_plugin_textdomain()`
 
 #### 2.3.3 / 2023-07-21
 * use 'all' over 'any' in query, perhaps better
