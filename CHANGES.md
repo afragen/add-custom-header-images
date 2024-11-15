@@ -1,4 +1,5 @@
 #### [unreleased]
+* add GA to generate POT
 
 #### 2.3.4 / 2024-11-01
 * remove `load_plugin_textdomain()`
