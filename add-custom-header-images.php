@@ -291,8 +291,9 @@ class Add_Custom_Header_Images {
 	}
 }
 
+// Using `after_setup_theme` to avoid WP 6.7 error for translations early.
 add_action(
-	'plugins_loaded',
+	'after_setup_theme',
 	function() {
 		new Add_Custom_Header_Images();
 	}
