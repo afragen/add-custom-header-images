@@ -1,5 +1,6 @@
 #### [unreleased]
 * add GA to generate POT
+* change startup action hook to `after_setup_theme` for translations
 
 #### 2.3.4 / 2024-11-01
 * remove `load_plugin_textdomain()`
