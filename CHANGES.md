@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 2.3.5 / 2025-04-03
 * add GA to generate POT
 * change startup action hook to `after_setup_theme` for translations
 
