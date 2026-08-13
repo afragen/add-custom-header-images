@@ -6,8 +6,8 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 5.2
 Requires PHP: 5.6
-Tested up to: 6.8
-Stable tag: 2.3.5
+Tested up to: 7.1
+Stable tag: 2.3.6
 
 ## Description
 
@@ -29,6 +29,10 @@ The plugin will display an error notice if there is **not** a page titled, **The
 4. Go to `Appearance > Header` or `Customize > Header Image` and select `Randomize` from the Default Images section.
 
 ## Changelog
+
+#### 2.3.6 / 2026-08-13
+* update GitHub Actions
+* update tested to
 
 #### 2.3.5 / 2025-04-03
 * add GA to generate POT
